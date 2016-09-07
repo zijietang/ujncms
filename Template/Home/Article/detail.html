@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<include file="Public/head" />
+</head>
+
+<body>
+
+	<div class="container">
+		<include file="Public/header" />
+
+		<div class="row">
+        	<div class="col-md-10 col-md-offset-1">
+			<h2 class="text-center">{$info.title}</h2>
+			<p class="text-center">
+				<span class=""> <span class="author">作者：{$info.uid|get_username} </span>
+					<span> 时间：{$info.create_time|date='Y-m-d H:i',###}</span>
+				</span>
+			</p>
+			<section id="contents">{$info.content}</section>
+			<p class="text-right">
+				<article:prev name="prev" info="info">
+					<a href="{:U('?id='.$prev['id'])}">上一篇</a>
+				</article:prev>
+				<article:next name="next" info="info">
+					<a href="{:U('?id='.$next['id'])}">下一篇</a>
+				</article:next>
+			</p>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- /container -->
+
+	<include file="Public/footer" />
+</body>
+</html>

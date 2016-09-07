@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+		<include file="Public/head" />
+  </head>
+
+  <body>
+
+    <div class="container">
+		<include file="Public/header" />
+
+      <!-- Main component for a primary marketing message or call to action -->
+      
+      <div class="jumbotron">
+        <p>今天有点什么新闻呢？！</p>
+      </div> 
+
+
+      <div class="row">
+	      <div class="col-md-9">
+	            <article:list name="list" category="$category['id']" child="true">
+	                <div class="">
+	                    <h4><a href="{:U('Article/detail?id='.$list['id'])}">{$list.title}</a></h4>
+	                </div>
+	                <div>
+	                    <p class="lead">{$list.description}</p>
+	                </div>
+	                <div>
+	                    <span><a href="{:U('Article/detail?id='.$list['id'])}">查看全文</a></span>
+	                    <span class="pull-left">
+	                        <span class="author">{$list.uid|get_username}</span>
+	                        <span>于 {$list.create_time|date='Y-m-d H:i',###}</span> 发表在 <span>
+	                        <a href="{:U('Article/lists?category='.get_category_name($list['category_id']))}">{$list.category_id|get_category_title}</a></span> 
+	                        <span>阅读( {$list.view} )</span>&nbsp;&nbsp;
+	                    </span>
+	                </div>
+	                <hr/>
+	            </article:list>
+	      </div>
+	      <div class="col-md-3">
+	      	<ul class="list-group">
+			  <li class="list-group-item list-group-item-info">栏目列表</li>
+			  	{:W('Category/lists', array(1, true))}
+			</ul>
+	      </div>
+      </div>
+
+
+    </div> <!-- /container -->
+
+		<include file="Public/footer" />
+  </body>
+</html>
+
